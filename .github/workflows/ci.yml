@@ -1,0 +1,23 @@
+name: Plugin CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-pdf-to-text:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: plugins/pdf-to-text/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --dev --frozen
+      - run: uv run pytest -q
+      - run: cd ../../.. && python3 -m json.tool plugins/pdf-to-text/plugin.json >/dev/null
+      - run: cd ../../.. && python3 -m json.tool catalog/catalog.json >/dev/null
