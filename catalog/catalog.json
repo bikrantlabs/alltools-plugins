@@ -36,7 +36,7 @@
       "ui": { "mode": "generic-form", "category": "pdf", "icon": "PDF", "supportsBatch": false, "supportsDragAndDrop": true },
       "capabilities": { "network": false, "gpu": false, "models": false },
       "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
-      "status": "available"
+      "status": "unavailable"
     },
     {
       "id": "image-convert",
