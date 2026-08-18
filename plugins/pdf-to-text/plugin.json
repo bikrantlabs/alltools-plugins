@@ -1,0 +1,55 @@
+{
+  "id": "pdf-to-text",
+  "name": "PDF to Text",
+  "version": "0.1.0",
+  "description": "Extract readable text from a PDF file completely offline.",
+  "author": "AllTools",
+  "license": "MIT",
+  "runtime": {
+    "type": "python",
+    "python": ">=3.11,<3.14",
+    "packageManager": "uv",
+    "platforms": ["win-x64", "linux-x64"]
+  },
+  "entrypoint": {
+    "command": "python -m alltools_pdf_to_text",
+    "protocolVersion": 1
+  },
+  "capabilities": {
+    "network": false,
+    "filesystem": "job-directory-only",
+    "gpu": false,
+    "models": false
+  },
+  "ui": {
+    "mode": "generic-form",
+    "screenId": "pdf-to-text",
+    "category": "pdf"
+  },
+  "job": {
+    "inputSchema": {
+      "type": "object",
+      "required": ["source"],
+      "properties": {
+        "source": {
+          "type": "file",
+          "accept": ["application/pdf", ".pdf"],
+          "label": "PDF file"
+        }
+      }
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "file",
+          "mimeType": "text/plain",
+          "extension": ".txt",
+          "label": "Extracted text"
+        }
+      }
+    },
+    "supportsCancellation": true,
+    "supportsProgress": true
+  }
+}
