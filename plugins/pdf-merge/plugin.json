@@ -1,0 +1,20 @@
+{
+  "id": "pdf-merge",
+  "name": "Merge PDFs",
+  "version": "0.1.0",
+  "description": "Combine multiple PDF files into one ordered document offline.",
+  "author": "AllTools",
+  "license": "MIT",
+  "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+  "dependencies": { "sharedRuntime": "python-3.11-uv", "pythonPackages": ["pypdf>=5.0,<6"], "models": [] },
+  "runtime": { "type": "python", "python": ">=3.11,<3.14", "packageManager": "uv", "platforms": ["win-x64", "linux-x64"] },
+  "entrypoint": { "command": "python -m alltools_pdf_merge", "protocolVersion": 1 },
+  "capabilities": { "network": false, "filesystem": "job-directory-only", "gpu": false, "models": false },
+  "ui": { "mode": "generic-form", "category": "pdf", "icon": "PDF", "supportsBatch": true, "supportsDragAndDrop": true },
+  "job": {
+    "inputSchema": { "type": "object", "required": ["source"], "properties": { "source": { "type": "file", "accept": ["application/pdf", ".pdf"], "multiple": true, "minItems": 2, "label": "PDF files in merge order" } } },
+    "outputSchema": { "type": "object", "properties": { "merged": { "type": "file", "mimeType": "application/pdf", "extension": ".pdf", "label": "Merged PDF" } } },
+    "supportsCancellation": true,
+    "supportsProgress": true
+  }
+}

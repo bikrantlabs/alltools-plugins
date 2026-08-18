@@ -1,27 +1,90 @@
 {
   "catalogVersion": 1,
-  "generatedAt": "2026-08-18T00:00:00Z",
+  "generatedAt": "2026-08-19T00:00:00Z",
   "plugins": [
     {
       "id": "pdf-to-text",
       "name": "PDF to Text",
       "version": "0.1.0",
       "description": "Extract readable text from PDF files completely offline.",
-      "source": {
-        "type": "local-development",
-        "path": "plugins/pdf-to-text"
-      },
+      "source": { "type": "local-development", "path": "plugins/pdf-to-text" },
       "platforms": ["win-x64", "linux-x64"],
-      "ui": {
-        "mode": "generic-form",
-        "screenId": "pdf-to-text",
-        "category": "pdf"
-      },
-      "capabilities": {
-        "network": false,
-        "gpu": false,
-        "models": false
-      }
+      "ui": { "mode": "dedicated-screen", "screenId": "pdf-to-text", "category": "pdf", "icon": "PDF", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "installed"
+    },
+    {
+      "id": "pdf-merge",
+      "name": "Merge PDFs",
+      "version": "0.1.0",
+      "description": "Combine multiple PDF files into one ordered document offline.",
+      "source": { "type": "local-development", "path": "plugins/pdf-merge" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "generic-form", "category": "pdf", "icon": "PDF", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "available"
+    },
+    {
+      "id": "pdf-split",
+      "name": "Split PDF",
+      "version": "0.1.0",
+      "description": "Split a PDF into page ranges or individual page files.",
+      "source": { "type": "local-development", "path": "plugins/pdf-split" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "generic-form", "category": "pdf", "icon": "PDF", "supportsBatch": false, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "available"
+    },
+    {
+      "id": "image-convert",
+      "name": "Convert Images",
+      "version": "0.1.0",
+      "description": "Convert images between common formats and preserve processing locally.",
+      "source": { "type": "local-development", "path": "plugins/image-convert" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "generic-form", "category": "image", "icon": "IMG", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "planned"
+    },
+    {
+      "id": "image-resize-compress",
+      "name": "Resize & Compress Images",
+      "version": "0.1.0",
+      "description": "Resize, optimize, and reduce image file sizes in batches.",
+      "source": { "type": "local-development", "path": "plugins/image-resize-compress" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "generic-form", "category": "image", "icon": "IMG", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "planned"
+    },
+    {
+      "id": "markdown-to-pdf",
+      "name": "Markdown to PDF",
+      "version": "0.1.0",
+      "description": "Turn Markdown documents into clean PDF files without uploading content.",
+      "source": { "type": "local-development", "path": "plugins/markdown-to-pdf" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "generic-form", "category": "document", "icon": "DOC", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": false, "models": false },
+      "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "planned"
+    },
+    {
+      "id": "ocr-local",
+      "name": "Local OCR",
+      "version": "0.1.0",
+      "description": "Extract text from scanned documents with an optional local model package.",
+      "source": { "type": "local-development", "path": "plugins/ocr-local" },
+      "platforms": ["win-x64", "linux-x64"],
+      "ui": { "mode": "dedicated-screen", "screenId": "ocr-local", "category": "document", "icon": "OCR", "supportsBatch": true, "supportsDragAndDrop": true },
+      "capabilities": { "network": false, "gpu": true, "models": true },
+      "distribution": { "channel": "catalog", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+      "status": "planned"
     }
   ]
 }

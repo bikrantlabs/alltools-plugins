@@ -18,6 +18,33 @@
     "description": { "type": "string" },
     "author": { "type": "string" },
     "license": { "type": "string" },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "channel": { "enum": ["bundled", "catalog", "local-development"] },
+        "installScope": { "const": "per-user" },
+        "requiresApproval": { "type": "boolean" },
+        "updatePolicy": { "enum": ["manual", "notify", "automatic"] }
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sharedRuntime": { "type": "string" },
+        "pythonPackages": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "models": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    },
     "runtime": {
       "type": "object",
       "additionalProperties": false,
@@ -61,7 +88,10 @@
         "mode": { "enum": ["generic-form", "dedicated-screen"] },
         "screenId": { "type": "string" },
         "icon": { "type": "string" },
-        "category": { "enum": ["pdf", "image", "document", "other"] }
+        "category": { "enum": ["pdf", "image", "document", "audio", "video", "archive", "developer", "other"] },
+        "supportsBatch": { "type": "boolean" },
+        "supportsDragAndDrop": { "type": "boolean" },
+        "favorite": { "type": "boolean" }
       }
     },
     "job": {
