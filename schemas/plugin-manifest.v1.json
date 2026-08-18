@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://alltools.local/schemas/plugin-manifest.v1.json",
+  "title": "AllTools Plugin Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "version", "description", "runtime", "entrypoint", "capabilities", "ui", "job"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"
+    },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "license": { "type": "string" },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "python", "packageManager"],
+      "properties": {
+        "type": { "const": "python" },
+        "python": { "type": "string" },
+        "packageManager": { "const": "uv" },
+        "platforms": {
+          "type": "array",
+          "items": { "enum": ["win-x64", "linux-x64"] },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "entrypoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "protocolVersion"],
+      "properties": {
+        "command": { "type": "string" },
+        "protocolVersion": { "const": 1 }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "network": { "const": false },
+        "filesystem": { "enum": ["job-directory-only", "declared-paths"] },
+        "gpu": { "type": "boolean" },
+        "models": { "type": "boolean" }
+      }
+    },
+    "ui": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["generic-form", "dedicated-screen"] },
+        "screenId": { "type": "string" },
+        "icon": { "type": "string" },
+        "category": { "enum": ["pdf", "image", "document", "other"] }
+      }
+    },
+    "job": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputSchema", "outputSchema"],
+      "properties": {
+        "inputSchema": { "type": "object" },
+        "outputSchema": { "type": "object" },
+        "supportsCancellation": { "type": "boolean" },
+        "supportsProgress": { "type": "boolean" }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sourceUrl": { "type": "string", "format": "uri" },
+        "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+        "sizeBytes": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}
