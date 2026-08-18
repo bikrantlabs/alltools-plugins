@@ -1,0 +1,58 @@
+name: Plugin or tool request
+description: Propose a new offline plugin, backend capability, or plugin improvement.
+title: "plugin: "
+labels:
+  - type: feature
+  - status: triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for plugin behavior, dependencies, models, protocol work, or new offline tools. If a desktop screen is also required, select Both repositories below.
+  - type: input
+    id: summary
+    attributes:
+      label: Short summary
+      placeholder: What should the local plugin do?
+    validations:
+      required: true
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Input and output workflow
+      description: Describe accepted files, options, ordering, and produced outputs.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and model requirements
+      description: Include Python packages, system binaries, model files, GPU expectations, and offline constraints.
+    validations:
+      required: false
+  - type: dropdown
+    id: coordination
+    attributes:
+      label: Desktop coordination needed?
+      options:
+        - Plugin repository only
+        - Both repositories
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Add references, sample files, related issues, or compatibility constraints.
+    validations:
+      required: false

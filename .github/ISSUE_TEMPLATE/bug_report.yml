@@ -1,0 +1,47 @@
+name: Plugin bug report
+description: Report a plugin, protocol, dependency, or output failure.
+title: "bug: "
+labels:
+  - type: bug
+  - status: triage
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What failed?
+      description: Include the plugin ID and the operation that failed.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps and fixture
+      description: Include a minimal safe sample or describe the input shape.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected output or protocol behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual output, event, traceback, or exit code
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Runtime environment
+      description: Include OS, Python, uv, plugin version, and GPU/model details when relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or additional context
+      description: Remove secrets and private file contents.
+    validations:
+      required: false
