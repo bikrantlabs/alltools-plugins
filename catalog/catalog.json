@@ -42,13 +42,13 @@
       "id": "image-convert",
       "name": "Convert Images",
       "version": "0.1.0",
-      "description": "Convert images between common formats and preserve processing locally.",
+      "description": "Convert images between common formats completely offline.",
       "source": { "type": "local-development", "path": "plugins/image-convert" },
       "platforms": ["win-x64", "linux-x64"],
       "ui": { "mode": "generic-form", "category": "image", "icon": "IMG", "supportsBatch": true, "supportsDragAndDrop": true },
       "capabilities": { "network": false, "gpu": false, "models": false },
       "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
-      "status": "planned"
+      "status": "available"
     },
     {
       "id": "image-resize-compress",

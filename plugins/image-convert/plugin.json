@@ -1,0 +1,20 @@
+{
+  "id": "image-convert",
+  "name": "Convert Images",
+  "version": "0.1.0",
+  "description": "Convert images between common formats completely offline.",
+  "author": "AllTools",
+  "license": "MIT",
+  "distribution": { "channel": "local-development", "installScope": "per-user", "requiresApproval": true, "updatePolicy": "notify" },
+  "dependencies": { "sharedRuntime": "python-3.11-uv", "pythonPackages": ["pillow>=10.0,<13"], "models": [] },
+  "runtime": { "type": "python", "python": ">=3.11,<3.14", "packageManager": "uv", "platforms": ["win-x64", "linux-x64"] },
+  "entrypoint": { "command": "python -m alltools_image_convert", "protocolVersion": 1 },
+  "capabilities": { "network": false, "filesystem": "job-directory-only", "gpu": false, "models": false },
+  "ui": { "mode": "generic-form", "category": "image", "icon": "IMG", "supportsBatch": true, "supportsDragAndDrop": true },
+  "job": {
+    "inputSchema": { "type": "object", "required": ["source", "format"], "properties": { "source": { "type": "file", "accept": ["image/*"], "multiple": true, "label": "Image files" }, "format": { "type": "string", "enum": ["png", "jpg", "webp", "bmp", "tiff"], "default": "png", "label": "Output format" } } },
+    "outputSchema": { "type": "object", "properties": { "converted": { "type": "file", "mimeType": "image/*", "label": "Converted image" } } },
+    "supportsCancellation": true,
+    "supportsProgress": true
+  }
+}
